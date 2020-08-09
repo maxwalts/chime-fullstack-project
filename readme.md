@@ -6,6 +6,8 @@ I usually wouldn't do this, but I made all my commits to master and I did them m
 
 Overall, I completed this in 3 sittings, around 10:10pm to around 12pm on Saturday, 10:30am to 12:30pm this morning, then like 2:20pm  to 3:10 this afternoon. Was trying to keep total coding time close to the 4hour mark.
 
+everything after commit 5af4471e1decc0fa22023dc13460420bdd0438e2 is styling so I could have stopped there.
+
 With extra time I probably would have :
 1) added a nav bar to separate the Menu, Add Item, and Add Tag forms, but this addition is trivial
 2) separated my on___ functions and conditionally rendered components but I kept them all pretty short so they should be readable as is
