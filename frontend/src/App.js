@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
+import { Container } from "semantic-ui-react";
 
 function App() {
   const [menuitems, setMenuitems] = useState([]);
@@ -13,21 +14,23 @@ function App() {
     );
   }, []);
   console.log(menuitems);
-  // TODO: to see possible created tags, I should make a new route just for tags.
-  // const [tags, setTags] = useState([]);
-  // useEffect(() => {
-  //   //get tags
-  //   fetch("http://localhost:5000/get/tags").then((response) =>
-  //     response.json().then((data) => {
-  //       setItems(data.items);
-  //     })
-  //   );
-  // }, []);
+
+  // to see possible created tags
+  const [tags, setTags] = useState([]);
+  useEffect(() => {
+    //get tags
+    fetch("http://localhost:5000/get/tags").then((response) =>
+      response.json().then((data) => {
+        setTags(data.tags);
+      })
+    );
+  }, []);
+  console.log(tags);
 
   return (
-    <div className="App">
-      <h1>testing</h1>
-    </div>
+    <Container>
+      <Menu items={menuitems} />
+    </Container>
   );
 }
 

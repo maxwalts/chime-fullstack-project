@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "semantic-ui-react";
 
 const Menu = ({ items }) => {
