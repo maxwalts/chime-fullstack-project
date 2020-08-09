@@ -9,7 +9,7 @@ import {
 } from "semantic-ui-react";
 
 const MakeItem = ({ onNewItem, tags }) => {
-  const [name, setItemName] = useState("");
+  const [name, setItemName] = useState(null);
   const [tag, setTag] = useState(null);
 
   return (
@@ -62,22 +62,24 @@ const MakeItem = ({ onNewItem, tags }) => {
           secondary
           onClick={async () => {
             const menuItem = { name, tag };
-            const response = await fetch(
-              "http://localhost:5000/post/menuitems",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(menuItem),
-              }
-            );
+            if (name !== "" && name !== null) {
+              const response = await fetch(
+                "http://localhost:5000/post/menuitems",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(menuItem),
+                }
+              );
 
-            if (response.ok) {
-              console.log("created post");
-              onNewItem(menuItem);
-              setItemName("");
-              setTag(null);
+              if (response.ok) {
+                console.log("created post");
+                onNewItem(menuItem);
+                setItemName(null);
+                setTag(null);
+              }
             }
           }}
           type="submit"
