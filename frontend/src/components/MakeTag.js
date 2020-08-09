@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Container } from "semantic-ui-react";
+// import React, { useState } from "react";
+// import { Container } from "semantic-ui-react";
 
-const MakeTag = ({}) => {
-  return <Container></Container>;
-};
+// const MakeTag = ({}) => {
+//   return <div></div>;
+// };
 
-export default MakeTag;
+// export default MakeTag;

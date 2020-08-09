@@ -3,11 +3,16 @@ import { Container } from "semantic-ui-react";
 
 const Menu = ({ items }) => {
   return (
-    <Container>
+    <div>
       {items.map((item) => {
-        return <p>{item.name}</p>;
+        return (
+          <p>
+            {item.name}
+            {item.tag}
+          </p>
+        );
       })}
-    </Container>
+    </div>
   );
 };
 

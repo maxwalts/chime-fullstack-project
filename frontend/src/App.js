@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
 import { Container } from "semantic-ui-react";
+import MakeItem from "./components/MakeItem";
+// import MakeTag from "./components/MakeTag";
 
 function App() {
   const [menuitems, setMenuitems] = useState([]);
@@ -28,9 +30,17 @@ function App() {
   console.log(tags);
 
   return (
-    <Container>
-      <Menu items={menuitems} />
-    </Container>
+    <div className="App">
+      <Container>
+        <Menu items={menuitems} />
+      </Container>
+      <Container>
+        <MakeItem tags={tags} />
+      </Container>
+      {/* <Container>
+        <MakeTag />
+      </Container> */}
+    </div>
   );
 }
 
