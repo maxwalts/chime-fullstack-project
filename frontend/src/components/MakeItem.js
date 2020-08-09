@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Form, Input, Button, Label } from "semantic-ui-react";
 
 const MakeItem = ({ onNewItem, tags }) => {
-  const [itemName, setItemName] = useState("");
-  const [tagName, setTagName] = useState("");
+  const [name, setItemName] = useState("");
+  const [tagname, setTagName] = useState("");
 
   return (
     <Form>
@@ -11,14 +11,13 @@ const MakeItem = ({ onNewItem, tags }) => {
         <Label>Menu Item Name</Label>
         <Form.Input
           placeholder="a food, like apple"
-          value={itemName}
+          value={name}
           onChange={(e) => setItemName(e.target.value)}
         />
       </Form.Field>
       <Form.Field>
         <Label>Tag Name</Label>
         <Form.Dropdown
-          clearable
           selection
           options={
             tags
@@ -28,13 +27,18 @@ const MakeItem = ({ onNewItem, tags }) => {
               : { key: 1, text: "Loading...", value: 1 }
           }
           placeholder="a category, like fruit. You can only add a tag that already exists."
+          value={tagname}
+          onChange={(_, data) => setTagName(data.tagname)}
+        />
+        {/* <Form.Input
+          placeholder="a category, like fruit. You can only add a tag that already exists"
           value={tagName}
           onChange={(e) => setTagName(e.target.value)}
-        />
+        /> */}
       </Form.Field>
       <Button
         onClick={async () => {
-          const menuItem = { itemName, tagName };
+          const menuItem = { name, tagname };
           const response = await fetch("http://localhost:5000/post/menuitems", {
             method: "POST",
             headers: {

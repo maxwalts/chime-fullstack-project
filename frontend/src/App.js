@@ -35,7 +35,12 @@ function App() {
         <Menu items={menuitems} />
       </Container>
       <Container>
-        <MakeItem tags={tags} />
+        <MakeItem
+          onNewItem={(menuItem) =>
+            setMenuitems((currentItems) => [menuItem, ...currentItems])
+          }
+          tags={tags}
+        />
       </Container>
       {/* <Container>
         <MakeTag />
