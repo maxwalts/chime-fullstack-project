@@ -19,7 +19,7 @@ def get_menuitems():
     for each in query:
         items.append({'name' : each.name, 'tag' : each.tag})
 
-    return jsonify({'menu items' : items}), 200
+    return jsonify({'menuitems' : items}), 200
 
 @app.route("/post/menuitems", methods=["POST"])
 def post_menuitems():
