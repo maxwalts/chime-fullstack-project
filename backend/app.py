@@ -3,21 +3,26 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 # import db & models
-from models import db, ExampleModel
+from models import db, MenuItem
 
 app = Flask(__name__.split('.')[0])
 CORS(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chimetestdb.db"
 db.init_app(app)
 
-@app.route("/api/example", methods=["GET", "POST", "PUT", "DELETE"])
-def ExampleEndpoint():
-    result = db.session.query(ExampleModel).filter(ExampleModel.number > 1)
+@app.route("/get/menuitems", methods=["GET"])
+def get_menuitems():
+    result = MenuItem.query.all()
     
     return {
-        "results": [(dict(row.items())) for row in result]
+        "menu items": [(dict(row.items())) for row in result]
     }, 200
+
+@app.route("/post/menuitems", methods=["POST"])
+def post_menuitems():
+
+    return "created", 201
 
 with app.app_context():
 	db.create_all()
