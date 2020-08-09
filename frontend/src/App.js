@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
-import { Container } from "semantic-ui-react";
+import { Container, Segment } from "semantic-ui-react";
 import MakeItem from "./components/MakeItem";
 import MakeTag from "./components/MakeTag";
 
@@ -31,10 +31,10 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
+      <Container style={{ marginTop: "5em", marginBottom: "8em" }}>
         <Menu items={menuitems} />
       </Container>
-      <Container>
+      <Container style={{ marginTop: "5em", marginBottom: "8em" }}>
         <MakeItem
           onNewItem={(menuItem) =>
             setMenuitems((currentItems) => [menuItem, ...currentItems])
@@ -42,7 +42,8 @@ function App() {
           tags={tags}
         />
       </Container>
-      <Container>
+
+      <Container style={{ marginTop: "5em", marginBottom: "8em" }}>
         <MakeTag
           onNewTag={(tagItem) =>
             setTags((currentTags) => [tagItem, ...currentTags])
