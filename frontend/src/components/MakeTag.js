@@ -25,18 +25,20 @@ const MakeTag = ({ onNewTag }) => {
           secondary
           onClick={async () => {
             const tagItem = { tagname };
-            const response = await fetch("http://localhost:5000/post/tags", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(tagItem),
-            });
+            if (tagname !== "" && tagname !== null) {
+              const response = await fetch("http://localhost:5000/post/tags", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tagItem),
+              });
 
-            if (response.ok) {
-              console.log("created post (tag)");
-              onNewTag(tagItem);
-              setTagName(null);
+              if (response.ok) {
+                console.log("created post (tag)");
+                onNewTag(tagItem);
+                setTagName(null);
+              }
             }
           }}
           type="submit"
