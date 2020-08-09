@@ -3,7 +3,7 @@ import "./App.css";
 import Menu from "./components/Menu";
 import { Container } from "semantic-ui-react";
 import MakeItem from "./components/MakeItem";
-// import MakeTag from "./components/MakeTag";
+import MakeTag from "./components/MakeTag";
 
 function App() {
   const [menuitems, setMenuitems] = useState([]);
@@ -42,9 +42,13 @@ function App() {
           tags={tags}
         />
       </Container>
-      {/* <Container>
-        <MakeTag />
-      </Container> */}
+      <Container>
+        <MakeTag
+          onNewTag={(tagItem) =>
+            setTags((currentTags) => [tagItem, ...currentTags])
+          }
+        />
+      </Container>
     </div>
   );
 }
