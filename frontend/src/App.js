@@ -3,16 +3,16 @@ import "./App.css";
 import Menu from "./components/Menu";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [menuitems, setMenuitems] = useState([]);
   useEffect(() => {
     //get menuitems
     fetch("http://localhost:5000/get/menuitems").then((response) =>
       response.json().then((data) => {
-        setItems(data.items);
+        setMenuitems(data.menuitems);
       })
     );
   }, []);
-  console.log(items);
+  console.log(menuitems);
   // TODO: to see possible created tags, I should make a new route just for tags.
   // const [tags, setTags] = useState([]);
   // useEffect(() => {
