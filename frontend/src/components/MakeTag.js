@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Label, Button, Segment, Divider } from "semantic-ui-react";
 
 const MakeTag = ({ onNewTag }) => {
-  const [tagname, setTagName] = useState("");
+  const [tagname, setTagName] = useState(null);
   return (
     <Segment
       compact
@@ -36,7 +36,7 @@ const MakeTag = ({ onNewTag }) => {
             if (response.ok) {
               console.log("created post (tag)");
               onNewTag(tagItem);
-              setTagName("");
+              setTagName(null);
             }
           }}
           type="submit"
