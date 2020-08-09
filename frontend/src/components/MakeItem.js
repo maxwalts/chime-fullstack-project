@@ -3,7 +3,7 @@ import { Form, Input, Button, Label } from "semantic-ui-react";
 
 const MakeItem = ({ onNewItem, tags }) => {
   const [name, setItemName] = useState("");
-  const [tagname, setTagName] = useState("");
+  const [tag, setTag] = useState("");
 
   return (
     <Form>
@@ -19,16 +19,17 @@ const MakeItem = ({ onNewItem, tags }) => {
         <Label>Tag Name</Label>
         <Form.Dropdown
           selection
+          //conditionally render if tags do not load
           options={
             tags
               ? tags.map((tag) => {
-                  return { key: tag.id, text: tag.tagname, value: tag.id };
+                  return { key: tag.id, text: tag.tagname, value: tag.tagname };
                 })
               : { key: 1, text: "Loading...", value: 1 }
           }
           placeholder="a category, like fruit. You can only add a tag that already exists."
-          value={tagname}
-          onChange={(_, data) => setTagName(data.tagname)}
+          value={tag}
+          onChange={(_, data) => setTag(data.value)}
         />
         {/* <Form.Input
           placeholder="a category, like fruit. You can only add a tag that already exists"
@@ -38,7 +39,7 @@ const MakeItem = ({ onNewItem, tags }) => {
       </Form.Field>
       <Button
         onClick={async () => {
-          const menuItem = { name, tagname };
+          const menuItem = { name, tag };
           const response = await fetch("http://localhost:5000/post/menuitems", {
             method: "POST",
             headers: {
@@ -51,7 +52,7 @@ const MakeItem = ({ onNewItem, tags }) => {
             console.log("created post");
             onNewItem(menuItem);
             setItemName("");
-            setTagName("");
+            setTag("");
           }
         }}
         type="submit"
