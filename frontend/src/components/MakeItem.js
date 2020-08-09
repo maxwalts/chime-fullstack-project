@@ -3,7 +3,7 @@ import { Form, Input, Button, Label } from "semantic-ui-react";
 
 const MakeItem = ({ onNewItem, tags }) => {
   const [name, setItemName] = useState("");
-  const [tag, setTag] = useState("");
+  const [tag, setTag] = useState(null);
 
   return (
     <Form>
@@ -52,7 +52,7 @@ const MakeItem = ({ onNewItem, tags }) => {
             console.log("created post");
             onNewItem(menuItem);
             setItemName("");
-            setTag("");
+            setTag(null);
           }
         }}
         type="submit"
